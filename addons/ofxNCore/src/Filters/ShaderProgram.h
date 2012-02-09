@@ -10,16 +10,8 @@
 #ifndef SHADERPROGRAM_H_
 #define SHADERPROGRAM_H_
 
-#ifdef __APPLE_CC__
-	#include "GLee.h"
-	#include <OpenGL/gl.h>
-	#include <GLUT/glut.h>
-#else
-	#include <stdlib.h> //needed to avoid redefinition of exit
-	#include "GLee.h"
-	#include <GL/gl.h>
-#endif
-
+#include <stdlib.h> //needed to avoid redefinition of exit
+#include "ofConstants.h"
 
 class ShaderProgram {
 

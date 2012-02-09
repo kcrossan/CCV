@@ -5,6 +5,7 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxVectorMath.h"
+#include "ofxPoint2f.h"
 
 /*
 Creates a grid of 4 handles that can be moved around to define a projection area

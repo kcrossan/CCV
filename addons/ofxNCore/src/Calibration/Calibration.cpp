@@ -53,7 +53,7 @@ void Calibration::passInTracker(BlobTracker *trackerIn)
 void Calibration::doCalibration()
 {
 	//Change the background color to black
-	ofSetColor(0x000000);
+	ofSetHexColor(0x000000);
 	ofFill();
 	ofRect(0, 0, ofGetWidth(), ofGetHeight());
 
@@ -65,7 +65,7 @@ void Calibration::doCalibration()
 	/************************************
 	 * Onscreen Calibration Instructions
 	 ************************************/
-	ofSetColor(0xFF00FF);
+	ofSetHexColor(0xFF00FF);
 	//ofSetWindowTitle("Calibration");
 	char reportStr[10240];
 	calibrationText.setLineHeight(20.0f);
@@ -111,19 +111,19 @@ void Calibration::drawCalibrationPointsAndBox()
 			ofSetColor(targetColor);
 			ofCircle(0.f, 0.f, 40);
 			//draw loading circle
-			ofSetColor(0x00A4FF);
+			ofSetHexColor(0x00A4FF);
 			DrawCircleLoader(0.0f, 0.0f, 40, 0, arcAngle * 360);
             //draw black circle so it cuts out center
-			ofSetColor(0x000000);
+			ofSetHexColor(0x000000);
 			ofCircle(0.f, 0.f, 25);
 			glPopMatrix();
         }
-		ofSetColor(0x00FF00); //Make Plus Sign
+		ofSetHexColor(0x00FF00); //Make Plus Sign
 		ofRect(screenpts[i].X * ofGetWidth() - 2, screenpts[i].Y * ofGetHeight() - 10, 4, 20); //Horizontal Plus
 		ofRect(screenpts[i].X * ofGetWidth() - 10, screenpts[i].Y * ofGetHeight() - 2, 20, 4); //Vertical Plus
 	}
 	//Draw Bounding Box
-	ofSetColor(0xFFFFFF);
+	ofSetHexColor(0xFFFFFF);
 	ofNoFill();
 	ofRect(calibrate.screenBB.upperLeftCorner.X * ofGetWidth(), calibrate.screenBB.upperLeftCorner.Y * ofGetHeight(),
 		   calibrate.screenBB.getWidth() * ofGetWidth(), calibrate.screenBB.getHeight() * ofGetHeight());
@@ -158,7 +158,7 @@ void Calibration::drawCalibrationBlobs()
         //Draw Blob Targets
         if(bShowTargets)
         {
-            ofSetColor(0xFFFFFF);
+            ofSetHexColor(0xFFFFFF);
             glLineWidth(5);
             glPushMatrix();
 			//	glLoadIdentity();

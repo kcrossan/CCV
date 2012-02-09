@@ -517,7 +517,7 @@ bool ofGstVideoGrabber::initGrabber(int w, int h){
 
 
 	string format_str_pipeline = string("%s name=video_source device=%s ! ") +
-								 "%s,width=%d,height=%d,framerate=%d/%d ! " +
+								 "%s,width=%d,height=%d ! " +
 								 "%s %s ";
 
 	gchar* pipeline_string =g_strdup_printf (
@@ -527,8 +527,6 @@ bool ofGstVideoGrabber::initGrabber(int w, int h){
 				      format.mimetype.c_str(),
 				      format.width,
 				      format.height,
-				      format.choosen_framerate.numerator,
-				      format.choosen_framerate.denominator,
 				      decodebin, scale,
 				      w,h);
 

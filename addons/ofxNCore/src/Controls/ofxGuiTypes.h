@@ -18,6 +18,7 @@
 #define OF_ADDON_USING_OFXVECTORMATH
 #define OF_ADDON_USING_OFXXMLSETTINGS
 
+#include "ofxPoint2f.h"
 #include "ofMain.h"
 #include "ofAddons.h"
 

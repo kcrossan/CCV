@@ -120,7 +120,7 @@ void CBoxAligner::draw( int x, int y, float radius )
         
         glTranslatef(fDrawOffset.x,fDrawOffset.y,0.0f);
         
-        ofSetColor(0x89ff41);
+        ofSetHexColor(0x89ff41);
         
         // draw box
 		glBegin( GL_LINE_STRIP );

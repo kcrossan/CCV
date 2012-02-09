@@ -483,7 +483,9 @@ void ofxNCoreVision::_update(ofEventArgs &e)
 		{
 			//printf("sending data osc : %d TCP : %d binary : %d\n", myTUIO.bOSCMode, myTUIO.bTCPMode, myTUIO.bBinaryMode);
 			myTUIO.setMode(contourFinder.bTrackFingers , contourFinder.bTrackObjects, contourFinder.bTrackFiducials);
-			myTUIO.sendTUIO(&getBlobs(),&getObjects(),&fidfinder.fiducialsList);
+			std::map<int, Blob> blobs = getBlobs();
+			std::map<int, Blob> objects = getObjects();
+			myTUIO.sendTUIO(&blobs,&objects,&fidfinder.fiducialsList);
 		}
 	}
 }
@@ -649,7 +651,7 @@ void ofxNCoreVision::_draw(ofEventArgs &e)
 
 void ofxNCoreVision::drawFullMode()
 {
-	ofSetColor(0xFFFFFF);
+	ofSetHexColor(0xFFFFFF);
 	//Draw Background Image
 	background.draw(0,0);
 
@@ -667,10 +669,10 @@ void ofxNCoreVision::drawFullMode()
 		}
 	}
 
-//	ofSetColor(0x444444);
+//	ofSetHexColor(0x444444);
 //	ofFill();
 //	ofRect(570,392,128,190);
-	ofSetColor(0xFFFFFF);
+	ofSetHexColor(0xFFFFFF);
 
 	if (bcamera)
 	{
@@ -696,7 +698,7 @@ void ofxNCoreVision::drawFullMode()
 		string str6 = "Blobs: ";
 		str6+= ofToString(contourFinder.nBlobs,0)+", "+ofToString(contourFinder.nObjects,0)+", "+ofToString(fidfinder.fiducialsList.size(),0)+"\n";
 
-		ofSetColor(0x969696);
+		ofSetHexColor(0x969696);
 		verdana.drawString( str3+ str1 + str6 + str4 + str2 + str5 , 570, 430);
 	}
 	else
@@ -724,7 +726,7 @@ void ofxNCoreVision::drawFullMode()
 		string str6 = "Blobs: ";
 		str6+= ofToString(contourFinder.nBlobs,0)+", "+ofToString(fidfinder.fiducialsList.size(),0)+", "+ofToString(contourFinder.nObjects,0)+"\n";
 
-		ofSetColor(0x969696);
+		ofSetHexColor(0x969696);
 		verdana.drawString(str3+ str1 + str6 + str4 + str2 + str5 , 573, 427);
 	}
 
@@ -754,7 +756,7 @@ void ofxNCoreVision::drawFullMode()
 				sprintf(buf, "Binding Error\nHost: %s\nProtocol: Binary\nPort: %i", myTUIO.localHost, myTUIO.TUIOFlashPort);
 		}
 
-		ofSetColor(0x969696);
+		ofSetHexColor(0x969696);
 		verdana.drawString(buf, 573, 515);
 
 }
@@ -801,9 +803,9 @@ void ofxNCoreVision::drawMiniMode()
 
 	//draw green tuio circle
 	if((myTUIO.bIsConnected || myTUIO.bOSCMode) && bTUIOMode)
-		ofSetColor(0x00FF00);	//green = connected
+		ofSetHexColor(0x00FF00);	//green = connected
 	else
-		ofSetColor(0xFF0000);	//red = not connected
+		ofSetHexColor(0xFF0000);	//red = not connected
 	ofFill();
 	ofCircle(ofGetWidth() - 17 , ofGetHeight() - 10, 5);
 	ofNoFill();
@@ -826,7 +828,7 @@ void ofxNCoreVision::drawFingerOutlines()
 				float xpos = contourFinder.blobs[i].centroid.x * (MAIN_WINDOW_WIDTH/camWidth);
 				float ypos = contourFinder.blobs[i].centroid.y * (MAIN_WINDOW_HEIGHT/camHeight);
 
-				ofSetColor(0xCCFFCC);
+				ofSetHexColor(0xCCFFCC);
 				char idStr[1024];
 
 				sprintf(idStr, "id: %i", contourFinder.blobs[i].id);
@@ -850,7 +852,7 @@ void ofxNCoreVision::drawFingerOutlines()
 				float xpos = contourFinder.objects[i].centroid.x * (MAIN_WINDOW_WIDTH/camWidth);
 				float ypos = contourFinder.objects[i].centroid.y * (MAIN_WINDOW_HEIGHT/camHeight);
 
-				ofSetColor(0xCCFFCC);
+				ofSetHexColor(0xCCFFCC);
 				char idStr[1024];
 
 				sprintf(idStr, "id: %i", contourFinder.objects[i].id);
@@ -861,7 +863,7 @@ void ofxNCoreVision::drawFingerOutlines()
 	}
 
 
-	ofSetColor(0xFFFFFF);
+	ofSetHexColor(0xFFFFFF);
 }
 
 void ofxNCoreVision::drawFiducials()
@@ -1142,7 +1144,7 @@ std::map<int, Blob> ofxNCoreVision::getBlobs()
 	return tracker.getTrackedBlobs();
 }
 
-std::map<int,Blob> ofxNCoreVision::getObjects()
+std::map<int, Blob> ofxNCoreVision::getObjects()
 {
 	return tracker.getTrackedObjects();
 }

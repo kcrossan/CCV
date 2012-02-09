@@ -63,10 +63,10 @@ class Blob {
                 glRotatef(-angle, 0.0f, 0.0f, 1.0f);
                 glTranslatef(-(x + angleBoundingRect.x/inputWidth * outputWidth), -(y + angleBoundingRect.y/inputHeight * outputHeight), 0.0f);                
 				
-					//ofSetColor(0xFFFFFF);
+					//ofSetHexColor(0xFFFFFF);
 					//ofRect(x + (angleBoundingRect.x - angleBoundingRect.width/2)/inputWidth * outputWidth, y + (angleBoundingRect.y - angleBoundingRect.height/2)/inputHeight * outputHeight, angleBoundingRect.width/inputWidth * outputWidth, angleBoundingRect.height/inputHeight * outputHeight);
 				
-					ofSetColor(0x0099FF);
+					ofSetHexColor(0x0099FF);
 					ofRect(x + (angleBoundingRect.x/inputWidth) * outputWidth, y + ((angleBoundingRect.y - angleBoundingRect.height)/inputHeight) * outputHeight, 1, (angleBoundingRect.height * 2)/inputHeight * outputHeight); //Vertical Plus
 					ofRect(x + ((angleBoundingRect.x - angleBoundingRect.width)/inputWidth) * outputWidth, y + (angleBoundingRect.y/inputHeight) * outputHeight, (angleBoundingRect.width * 2)/inputWidth * outputWidth, 1); //Horizontal Plus
 
@@ -74,7 +74,7 @@ class Blob {
 
 			//draw contours
 			ofNoFill();
-            ofSetColor(0xFF0099);
+            ofSetHexColor(0xFF0099);
             ofBeginShape();
             for (int i = 0; i < nPts; i++)
                    ofVertex(x + pts[i].x/inputWidth * outputWidth, y + pts[i].y/(inputHeight) * outputHeight);
@@ -89,7 +89,7 @@ class Blob {
          glTranslatef(-(x + angleBoundingRect.x/inputWidth * outputWidth), -(y + angleBoundingRect.y/inputHeight * outputHeight), 0.0f);                
 		 ofNoFill();
 		 
-		 ofSetColor(0xFFFFFF);
+		 ofSetHexColor(0xFFFFFF);
 		 ofRect(x + (angleBoundingRect.x - angleBoundingRect.width/2)/inputWidth * outputWidth, y + (angleBoundingRect.y - angleBoundingRect.height/2)/inputHeight * outputHeight, angleBoundingRect.width/inputWidth * outputWidth, angleBoundingRect.height/inputHeight * outputHeight);
 
 		 glPopMatrix();

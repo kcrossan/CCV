@@ -115,6 +115,7 @@ bool ofGstUtils::setPipelineWithSink(string pipeline, string sinkname, bool isSt
 	ofLog(OF_LOG_NOTICE, "gstreamer pipeline: %s", pipeline_string);
 	if(error!=NULL){
 		ofLog(OF_LOG_ERROR,"couldnt create pipeline: " + string(error->message));
+		ofLog(OF_LOG_ERROR,"pipeline: " + pipeline);
 		return false;
 	}
 
