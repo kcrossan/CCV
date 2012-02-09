@@ -28,7 +28,7 @@ USER_LIBS =
 
 # change this to add different compiler optimizations to your project
 
-USER_COMPILER_OPTIMIZATION = -march=native-O2
+USER_COMPILER_OPTIMIZATION = -march=native -O2
 
 
 EXCLUDE_FROM_SOURCE="bin,.xcodeproj,obj,.git"
